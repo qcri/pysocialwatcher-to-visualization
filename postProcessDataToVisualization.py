@@ -255,7 +255,7 @@ class PostProcessVisualizationData:
         to_save_path = HISTORY_FOLDER_PATH + CURRENT_DATE_SERIAL + "-" + UNIQUE_TIME_ID
         current_date = CURRENT_DATE_SERIAL
         current_time = UNIQUE_TIME_ID
-        history_file.write(",".join([new_uri,current_date,current_time]) + "\n")
+        history_file.write("\n" + ",".join([new_uri,current_date,current_time]))
         shutil.copytree(APPLICATION_CURRENT_DATA_FOLDER, to_save_path)
 
 
