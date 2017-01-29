@@ -12,12 +12,15 @@ from constants import *
 
 send_error_to = [
     "maraujo@hbku.edu.qa",
-    # "msthing@gmail.com",
-    # "iweber@hbku.edu.qa"
+    "msthing@gmail.com",
+    "iweber@hbku.edu.qa"
 ]
 
 send_success_to = [
-    "maraujo@hbku.edu.qa"
+    "maraujo@hbku.edu.qa",
+    "msthing@gmail.com",
+    "iweber@hbku.edu.qa"
+
 ]
 
 def get_machine_info_message():

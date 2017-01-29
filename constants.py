@@ -8,7 +8,7 @@ CURRENT_HOSTNAME = check_output(['hostname'])
 CURRENT_IP = check_output(['hostname', '--all-ip-addresses'])
 
 # IMPORTANT! Set this variable where the application root data is
-APPLICATION_ROOT_DATA_FOLDER = "../"
+APPLICATION_ROOT_DATA_FOLDER = "/var/www/sha/data/"
 
 LOG_FILE_NAME = "logging.txt"
 DATA_RAW_OUTPUT_FILE = "data.csv"
