@@ -3,3 +3,4 @@ fb_credentials.csv
 data.csv
 *.pyc
 logging.txt
+credentials.csv
