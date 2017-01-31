@@ -23,8 +23,7 @@ send_success_to = [
 
 ]
 
-def get_machine_info_message():
-    log_msg = open(LOG_FILE_NAME, "r").read()
+def get_error_message():
     traceback_msg = traceback.format_exc()
     message = "Update Arabic Awareness Error\n"
     message += "HOSTNAME: " + CURRENT_HOSTNAME + "\n"
@@ -38,14 +37,36 @@ def get_machine_info_message():
     message += traceback_msg
     return message
 
-def send_email_success():
+def get_success_message(NUMBER_OF_REQUESTS):
+    FINISH_TIME = datetime.datetime.now()
+    DURATIION = FINISH_TIME - INITIAL_TIME
+    message = "SUCCESS:\n"
+    message += "HOSTNAME: " + CURRENT_HOSTNAME + "\n"
+    message += "HOST IP: " + CURRENT_IP + "\n"
+    message += "-----------------------------------------------------------\n"
+    message += "SUMMARY:\n"
+    message += "Initial Time: " + str(INITIAL_TIME) + "\n"
+    message += "End Time: " + str(FINISH_TIME) + "\n"
+    message += "Duration: " + str(DURATIION) + "\n"
+    message += "Number of Facebook Requests: " + str(NUMBER_OF_REQUESTS) + "\n"
+    message += "Log File:" + LOG_FILE_NAME + "\n"
+    message += "-----------------------------------------------------------\n"
+    message += "REFERENCE PATHS:\n"
+    message += "Update Script Path: " + UPDATE_SCRIPT_CURRENT_FOLDER + "\n"
+    message += "Application History Map File Path: " + postProcessDataToVisualization.HISTORY_MAP_FILE_PATH + "\n"
+    message += "Application Current Data Folder Path: " + postProcessDataToVisualization.APPLICATION_CURRENT_DATA_FOLDER + "\n"
+    message += "Application History Data Folder Path: " + postProcessDataToVisualization.HISTORY_FOLDER_PATH + "\n"
+    message += "Raw Facebook Requests Data Path: " + COMPRESSED_RAW_FILES_PATH + "\n"
+    return message
+
+def send_email_success(NUMBER_OF_REQUESTS):
     email_credentials = open(EMAIL_CREDENTIALS_FILE, "r").read().strip().split(",")
-    yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_success_to, subject="Success: Arabic Awareness Data Updated", contents="Success.")
+    yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_success_to, subject="Success: Arabic Awareness Data Updated", contents= get_success_message(NUMBER_OF_REQUESTS))
     print "Success email sent."
 
 def send_email_error(subject):
     email_credentials = open(EMAIL_CREDENTIALS_FILE, "r").read().strip().split(",")
-    email_body = get_machine_info_message()
+    email_body = get_error_message()
     yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_error_to, subject=subject, contents=email_body)
     print "Error email sent."
 
@@ -95,6 +116,6 @@ if __name__ == '__main__':
     dataCollector = init_socialWatcher_and_check_credentials()
     dataframe = run_data_collection(dataCollector)
     post_process_data()
-    send_email_success()
+    send_email_success(len(dataframe))
     os.system("rm dataframe_*.csv")
     os.system("rm collect_*.csv")

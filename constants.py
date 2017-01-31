@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 import postProcessDataToVisualization
 import os
-
 from subprocess import check_output
+import datetime
 ips = check_output(['hostname', '--all-ip-addresses'])
 CURRENT_HOSTNAME = check_output(['hostname'])
 CURRENT_IP = check_output(['hostname', '--all-ip-addresses'])
+NUMBER_OF_REQUESTS = 0
+INITIAL_TIME = datetime.datetime.now()
 
 # IMPORTANT! Set this variable where the application root data is
 APPLICATION_ROOT_DATA_FOLDER = "/var/www/sha/data/"
