@@ -12,8 +12,8 @@ from constants import *
 
 send_error_to = [
     "maraujo@hbku.edu.qa",
-    "msthing@gmail.com",
-    "iweber@hbku.edu.qa"
+#    "msthing@gmail.com",
+#    "iweber@hbku.edu.qa"
 ]
 
 send_success_to = [
@@ -31,8 +31,8 @@ def get_machine_info_message():
     message += "HOST IP: " + CURRENT_IP + "\n"
     message += "Update Script Path: " + UPDATE_SCRIPT_CURRENT_FOLDER + "\n"
     message += "-----------------------------------------------------------\n"
-    message += "LOG MESSAGE:\n"
-    message += log_msg + "\n"
+    message += "LOG MESSAGE FILE:\n"
+    message += LOG_FILE_NAME + "\n"
     message += "-----------------------------------------------------------\n"
     message += "TRACEBACK MESSAGE:\n"
     message += traceback_msg
@@ -40,7 +40,7 @@ def get_machine_info_message():
 
 def send_email_success():
     email_credentials = open(EMAIL_CREDENTIALS_FILE, "r").read().strip().split(",")
-    yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_success_to, subject="Arabic Awareness Data Updated", contents="Success.")
+    yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_success_to, subject="Success: Arabic Awareness Data Updated", contents="Success.")
     print "Success email sent."
 
 def send_email_error(subject):
