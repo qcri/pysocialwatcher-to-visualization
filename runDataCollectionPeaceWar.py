@@ -102,20 +102,20 @@ def run_data_collection(dataCollector):
 
 def post_process_data():
     try:
-        save_original_data()
-        postProcessData = postProcessDataToVisualization.PostProcessVisualizationData(DATA_RAW_OUTPUT_FILE)
+        # save_original_data()
+        postProcessData = postProcessDataToVisualization.PostProcessVisualizationData("peace_war_fake.csv")
         postProcessData.process_data()
     except Exception as Error:
-        send_email_error("Error: Post Processing")
+        # send_email_error("Error: Post Processing")
         raise Error
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
     logger = logging.getLogger()
     logger.addHandler(logging.FileHandler(LOG_FILE_NAME, 'w'))
-    dataCollector = init_socialWatcher_and_check_credentials()
-    dataframe = run_data_collection(dataCollector)
-    # post_process_data()
+    # dataCollector = init_socialWatcher_and_check_credentials()
+    # dataframe = run_data_collection(dataCollector)
+    post_process_data()
     # send_email_success(len(dataframe))
     # os.system("rm dataframe_*.csv")
     # os.system("rm collect_*.csv")
