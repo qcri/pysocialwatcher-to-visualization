@@ -75,7 +75,7 @@
         "not": [6015559470583],
         "name": "Locals"
     }],
-    "family_status" : [{
+    "family_statuses" : [{
       "or": [6002714398372],
       "name": "isParent"
     },
