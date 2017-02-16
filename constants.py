@@ -18,8 +18,8 @@ else:
 
 LOG_FILE_NAME = "logging.txt"
 DATA_RAW_OUTPUT_FILE = "data.csv"
-# JSON_INPUT_FILE = "arabic_health_awareness.json"
-JSON_INPUT_FILE = "peace_vs_war_collection_input.json"
+JSON_INPUT_FILE = "arabic_health_awareness.json"
+# JSON_INPUT_FILE = "peace_vs_war_collection_input.json"
 FB_CREDENTIALS_FILE = "fb_credentials.csv"
 EMAIL_CREDENTIALS_FILE = "email_credentials.csv"
 UPDATE_SCRIPT_CURRENT_FOLDER = os.path.dirname(os.path.abspath(__file__)) + "/"
