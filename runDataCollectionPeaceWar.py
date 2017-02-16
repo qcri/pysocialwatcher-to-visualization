@@ -103,7 +103,7 @@ def run_data_collection(dataCollector):
 def post_process_data():
     try:
         # save_original_data()
-        postProcessData = postProcessDataToVisualization.PostProcessVisualizationData("peace_war_fake.csv")
+        postProcessData = postProcessDataToVisualization.PostProcessVisualizationData("data.csv")
         postProcessData.process_data()
     except Exception as Error:
         # send_email_error("Error: Post Processing")
