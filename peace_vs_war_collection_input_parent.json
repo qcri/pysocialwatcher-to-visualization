@@ -1,0 +1,125 @@
+{   "name": "Peace War Interest in US Countries",
+    "geo_locations": [
+      { "name": "regions", "values": [{"key":"3843"}],  "location_types": ["home"], "pySocialWatcherReference": "Alabama" },
+      { "name": "regions", "values": [{"key":"3844"}],  "location_types": ["home"], "pySocialWatcherReference": "Alaska" },
+      { "name": "regions", "values": [{"key":"3845"}],  "location_types": ["home"], "pySocialWatcherReference": "Arizona" },
+      { "name": "regions", "values": [{"key":"3846"}],  "location_types": ["home"], "pySocialWatcherReference": "Arkansas" },
+      { "name": "regions", "values": [{"key":"3847"}],  "location_types": ["home"], "pySocialWatcherReference": "California" },
+     { "name": "regions", "values": [{"key":"3848"}],  "location_types": ["home"], "pySocialWatcherReference": "Colorado"},
+     { "name": "regions", "values": [{"key":"3849"}],  "location_types": ["home"], "pySocialWatcherReference": "Connecticut"},
+     { "name": "regions", "values": [{"key":"3850"}],  "location_types": ["home"], "pySocialWatcherReference": "Delaware"},
+     { "name": "regions", "values": [{"key":"3851"}],  "location_types": ["home"], "pySocialWatcherReference": "District of Columbia"},
+     { "name": "regions", "values": [{"key":"3852"}],  "location_types": ["home"], "pySocialWatcherReference": "Florida"},
+     { "name": "regions", "values": [{"key":"3853"}],  "location_types": ["home"], "pySocialWatcherReference": "Georgia"},
+     { "name": "regions", "values": [{"key":"3854"}],  "location_types": ["home"], "pySocialWatcherReference": "Hawaii"},
+     { "name": "regions", "values": [{"key":"3855"}],  "location_types": ["home"], "pySocialWatcherReference": "Idaho"},
+     { "name": "regions", "values": [{"key":"3856"}],  "location_types": ["home"], "pySocialWatcherReference": "Illinois"},
+     { "name": "regions", "values": [{"key":"3857"}],  "location_types": ["home"], "pySocialWatcherReference": "Indiana"},
+     { "name": "regions", "values": [{"key":"3858"}],  "location_types": ["home"], "pySocialWatcherReference": "Iowa"},
+     { "name": "regions", "values": [{"key":"3859"}],  "location_types": ["home"], "pySocialWatcherReference": "Kansas"},
+     { "name": "regions", "values": [{"key":"3860"}],  "location_types": ["home"], "pySocialWatcherReference": "Kentucky"},
+     { "name": "regions", "values": [{"key":"3861"}],  "location_types": ["home"], "pySocialWatcherReference": "Louisiana"},
+     { "name": "regions", "values": [{"key":"3862"}],  "location_types": ["home"], "pySocialWatcherReference": "Maine"},
+     { "name": "regions", "values": [{"key":"3863"}],  "location_types": ["home"], "pySocialWatcherReference": "Maryland"},
+     { "name": "regions", "values": [{"key":"3864"}],  "location_types": ["home"], "pySocialWatcherReference": "Massachusetts"},
+     { "name": "regions", "values": [{"key":"3865"}],  "location_types": ["home"], "pySocialWatcherReference": "Michigan"},
+     { "name": "regions", "values": [{"key":"3866"}],  "location_types": ["home"], "pySocialWatcherReference": "Minnesota"},
+     { "name": "regions", "values": [{"key":"3867"}],  "location_types": ["home"], "pySocialWatcherReference": "Mississippi"},
+     { "name": "regions", "values": [{"key":"3868"}],  "location_types": ["home"], "pySocialWatcherReference": "Missouri"},
+     { "name": "regions", "values": [{"key":"3869"}],  "location_types": ["home"], "pySocialWatcherReference": "Montana"},
+     { "name": "regions", "values": [{"key":"3870"}],  "location_types": ["home"], "pySocialWatcherReference": "Nebraska"},
+     { "name": "regions", "values": [{"key":"3871"}],  "location_types": ["home"], "pySocialWatcherReference": "Nevada"},
+     { "name": "regions", "values": [{"key":"3872"}],  "location_types": ["home"], "pySocialWatcherReference": "New Hampshire"},
+     { "name": "regions", "values": [{"key":"3873"}],  "location_types": ["home"], "pySocialWatcherReference": "New Jersey"},
+     { "name": "regions", "values": [{"key":"3874"}],  "location_types": ["home"], "pySocialWatcherReference": "New Mexico"},
+     { "name": "regions", "values": [{"key":"3875"}],  "location_types": ["home"], "pySocialWatcherReference": "New York"},
+     { "name": "regions", "values": [{"key":"3876"}],  "location_types": ["home"], "pySocialWatcherReference": "North Carolina"},
+      { "name": "regions", "values": [{"key":"3877"}],  "location_types": ["home"], "pySocialWatcherReference": "North Dakota"},
+     { "name": "regions", "values": [{"key":"3878"}],  "location_types": ["home"], "pySocialWatcherReference": "Ohio"},
+     { "name": "regions", "values": [{"key":"3879"}],  "location_types": ["home"], "pySocialWatcherReference": "Oklahoma"},
+     { "name": "regions", "values": [{"key":"3880"}],  "location_types": ["home"], "pySocialWatcherReference": "Oregon"},
+     { "name": "regions", "values": [{"key":"3881"}],  "location_types": ["home"], "pySocialWatcherReference": "Pennsylvania"},
+     { "name": "regions", "values": [{"key":"3882"}],  "location_types": ["home"], "pySocialWatcherReference": "Rhode Island"},
+     { "name": "regions", "values": [{"key":"3883"}],  "location_types": ["home"], "pySocialWatcherReference": "South Carolina"},
+     { "name": "regions", "values": [{"key":"3884"}],  "location_types": ["home"], "pySocialWatcherReference": "South Dakota"},
+     { "name": "regions", "values": [{"key":"3885"}],  "location_types": ["home"], "pySocialWatcherReference": "Tennessee"},
+     { "name": "regions", "values": [{"key":"3886"}],  "location_types": ["home"], "pySocialWatcherReference": "Texas"},
+     { "name": "regions", "values": [{"key":"3887"}],  "location_types": ["home"], "pySocialWatcherReference": "Utah"},
+     { "name": "regions", "values": [{"key":"3888"}],  "location_types": ["home"], "pySocialWatcherReference": "Vermont"},
+     { "name": "regions", "values": [{"key":"3889"}],  "location_types": ["home"], "pySocialWatcherReference": "Virginia"},
+     { "name": "regions", "values": [{"key":"3890"}],  "location_types": ["home"], "pySocialWatcherReference": "Washington"},
+     { "name": "regions", "values": [{"key":"3891"}],  "location_types": ["home"], "pySocialWatcherReference": "West Virginia"},
+     { "name": "regions", "values": [{"key":"3892"}],  "location_types": ["home"], "pySocialWatcherReference": "Wisconsin"},
+      { "name": "regions", "values": [{"key":"3893"}],  "location_types": ["home"], "pySocialWatcherReference": "Wyoming"}
+    ],
+    "scholarities":[
+      {
+        "name" : "Graduated",
+        "or" : [3,7,8,9,11]
+      },
+      {
+        "name" : "No Degree",
+        "or" : [1,12,13]
+      },{
+        "name" : "High School",
+        "or" : [2,4,5,6,10]
+      }
+    ],
+    "languages":[
+        null
+    ],
+    "behavior": [{
+        "or": [6015559470583],
+        "name": "Expats"
+    },{
+        "not": [6015559470583],
+        "name": "Locals"
+    }],
+    "family_statuses" : [{
+      "or": [6002714398372],
+      "name": "isParent"
+    },
+    {
+      "not": [6002714398372],
+      "name": "notParent"
+    }],
+    "ages_ranges": [
+        {"min":18, "max":24},
+        {"min":25, "max":44},
+        {"min":45}
+    ],
+    "genders": [1,2],
+    "interests": [
+      null
+    ,{
+        "or": [6003047962244],
+        "name": "Peace"
+    },{
+        "or": [6002966337046],
+        "name" : "Human Rights"
+    },{
+        "or": [6003091134016],
+        "name" : "Social Moviment"
+    },{
+        "or": [6003102992229],
+        "name": "Humanitarian Aid"
+    },{
+        "or": [6003514121042],
+        "name" : "War"
+    },{
+        "or": [6003496711680,6003188476455],
+        "name" : "Firearm or Gun"
+    },{
+        "or": [6004123573189],
+        "name" : "Bomb"
+    },{
+        "or": [6004107862409],
+        "name": "Fighter Aircraft"
+    },{
+        "or": [6003047962244, 6002966337046, 6003091134016, 6003102992229],
+        "name": "All Peace"
+    },{
+        "or": [6003514121042, 6003496711680,6003188476455, 6004123573189, 6004107862409],
+        "name" : "All War"
+    }]
+}

@@ -75,13 +75,17 @@
         "not": [6015559470583],
         "name": "Locals"
     }],
-    "family_status" : [{
-      "or": [6002714398372],
-      "name": "isParent"
+    "relationship_statuses" : [{
+      "or": [1, 11, 12, 13],
+      "name": "Single"
     },
     {
-      "not": [6002714398372],
-      "name": "notParent"
+      "or": [9, 10, 2],
+      "name": "Dating"
+    },
+    {
+      "or": [3, 4, 7, 8],
+      "name": "Married"
     }],
     "ages_ranges": [
         {"min":18, "max":24},
