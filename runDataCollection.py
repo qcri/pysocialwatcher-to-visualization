@@ -86,7 +86,7 @@ def save_original_data():
     logging.info("Saving compressed original data")
     dataframe = postProcessDataToVisualization.pd.read_csv(DATA_RAW_OUTPUT_FILE)
     dataframe["timestamp"] = time.time()
-    raw_file_name = "data" + postProcessDataToVisualization.CURRENT_DATE_SERIAL + "-" + postProcessDataToVisualization.UNIQUE_TIME_ID + ".gz"
+    raw_file_name = JSON_INPUT_FILE.split(".")[0] + "-" + postProcessDataToVisualization.CURRENT_DATE_SERIAL + "-" + postProcessDataToVisualization.UNIQUE_TIME_ID + ".gz"
     dataframe.to_csv(COMPRESSED_RAW_FILES_PATH + raw_file_name, compression="gzip")
 
 

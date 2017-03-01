@@ -317,9 +317,14 @@ class PostProcessVisualizationData:
         self.data.to_csv("new_dataset.csv")
 
     def __init__(self, filepath):
+        global CURRENT_DATE_SERIAL
+        global UNIQUE_TIME_ID
         logging.info("Loading Data... (take some seconds)")
         self.data = load_dataframe_from_file(filepath)
         self.original_data = self.data.copy(deep=True)
+        timestamp = int(self.data.iloc[0]["timestamp"])
+        CURRENT_DATE_SERIAL = str(datetime.datetime.fromtimestamp(timestamp).date())
+        UNIQUE_TIME_ID = str(timestamp)
 
 
 if __name__ == '__main__':
