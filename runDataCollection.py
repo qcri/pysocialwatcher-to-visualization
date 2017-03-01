@@ -12,8 +12,8 @@ from constants import *
 
 send_error_to = [
     "maraujo@hbku.edu.qa",
-#    "msthing@gmail.com",
-#    "iweber@hbku.edu.qa"
+    "msthing@gmail.com",
+    "iweber@hbku.edu.qa"
 ]
 
 send_success_to = [
