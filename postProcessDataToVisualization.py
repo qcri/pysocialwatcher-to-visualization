@@ -36,6 +36,8 @@ HISTORY_FOLDER_NAME = "historic_data/"
 HISTORY_FOLDER_PATH = "../" + HISTORY_FOLDER_NAME
 HISTORY_MAP_FILE_PATH = HISTORY_FOLDER_PATH + "history_map.csv"
 PYSOCIALWATCHER_reference_field = "pySocialWatcherReference"
+ACCESS_DEVICES_column_name = "access_device"
+CITIZENSHIP_column_name = "citizenship"
 
 def zipdir(path, ziph):
     # ziph is zipfile handle
@@ -73,9 +75,17 @@ def get_location_from_row(row):
 def get_scholarity_from_row(row):
     return row[SCHOLARITY_column_name]["name"]
 
+def get_access_devices_from_row(row):
+    if not pd.isnull(row[ACCESS_DEVICES_column_name]):
+        return row[ACCESS_DEVICES_column_name]["name"]
+
+def get_citizenship_from_row(row):
+    if not pd.isnull(row[CITIZENSHIP_column_name]):
+        return row[CITIZENSHIP_column_name]["name"]
 
 def get_behavior_from_row(row):
-    return row[BEHAVIOR_column_name]["name"]
+    if not pd.isnull(row[BEHAVIOR_column_name]):
+        return row[BEHAVIOR_column_name]["name"]
 
 class PostProcessVisualizationData:
     expat_counter = 0
@@ -238,6 +248,16 @@ class PostProcessVisualizationData:
         logging.info("Creating topic column")
         self.data[BEHAVIOR_column_name] = self.data.apply(lambda row: get_behavior_from_row(row), axis=1)
 
+    def generate_citizenship_column(self):
+        if CITIZENSHIP_column_name in self.data.columns.tolist():
+            logging.info("Creating citizenship column")
+            self.data[CITIZENSHIP_column_name] = self.data.apply(lambda row: get_citizenship_from_row(row), axis=1)
+
+    def generate_access_devices_column(self):
+        if ACCESS_DEVICES_column_name in self.data.columns.tolist():
+            logging.info("Creating access_devices column")
+            self.data[ACCESS_DEVICES_column_name] = self.data.apply(lambda row: get_access_devices_from_row(row), axis=1)
+
     def generate_location_column(self):
         logging.info("Creating country code column")
         self.data[LOCATION_column_name] = self.data.apply(lambda row: get_location_from_row(row), axis=1)
@@ -260,6 +280,9 @@ class PostProcessVisualizationData:
             history_file.write("path,date,timestamp")
             history_file.close()
 
+    def set_20s_to_0(self):
+        self.data["audience"] = self.data.apply(lambda row: 0 if (row["audience"]==20 or row["audience"]==0)else row["audience"],axis=1)
+
     def add_and_save_at_history_folder(self):
         logging.info("Saving history")
         self.build_history_map_file_if_not_exist()
@@ -273,6 +296,7 @@ class PostProcessVisualizationData:
 
     def process_data(self):
         self.delete_column(RESPONSE_column_name)
+        self.set_20s_to_0()
         # self.rename_column("ages_ranges", AGE_RANGE)
         # self.rename_column("scholarities", SCHOLARITY)
         # self.rename_column("behavior", CITIZENSHIP)
@@ -281,6 +305,8 @@ class PostProcessVisualizationData:
         # self.replace_specific_key_value(GENDER, 2, "Female")
         self.generate_topic_column()
         self.generate_behavior_column()
+        self.generate_access_devices_column()
+        self.generate_citizenship_column()
         self.generate_location_column()
         self.generate_scholarity_column()
         self.generate_age_range_column()
@@ -322,7 +348,10 @@ class PostProcessVisualizationData:
         logging.info("Loading Data... (take some seconds)")
         self.data = load_dataframe_from_file(filepath)
         self.original_data = self.data.copy(deep=True)
-        timestamp = int(self.data.iloc[0]["timestamp"])
+        try:
+            timestamp = int(self.data.iloc[0]["timestamp"])
+        except KeyError:
+            timestamp = time.time()
         CURRENT_DATE_SERIAL = str(datetime.datetime.fromtimestamp(timestamp).date())
         UNIQUE_TIME_ID = str(timestamp)
 

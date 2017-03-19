@@ -60,15 +60,21 @@ def get_success_message(NUMBER_OF_REQUESTS):
     return message
 
 def send_email_success(NUMBER_OF_REQUESTS):
-    email_credentials = open(EMAIL_CREDENTIALS_FILE, "r").read().strip().split(",")
-    yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_success_to, subject="Success: Arabic Awareness Data Updated", contents= get_success_message(NUMBER_OF_REQUESTS))
-    print "Success email sent."
+    try:
+        email_credentials = open(EMAIL_CREDENTIALS_FILE, "r").read().strip().split(",")
+        yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_success_to, subject="Success: Arabic Awareness Data Updated", contents= get_success_message(NUMBER_OF_REQUESTS))
+        print "Success email sent."
+    except:
+        print "Warning: Could not send an success email."
 
 def send_email_error(subject):
-    email_credentials = open(EMAIL_CREDENTIALS_FILE, "r").read().strip().split(",")
-    email_body = get_error_message()
-    yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_error_to, subject=subject, contents=email_body)
-    print "Error email sent."
+    try:
+        email_credentials = open(EMAIL_CREDENTIALS_FILE, "r").read().strip().split(",")
+        email_body = get_error_message()
+        yagmail.SMTP(email_credentials[0], email_credentials[1]).send(to=send_error_to, subject=subject, contents=email_body)
+        print "Error email sent."
+    except:
+        print "ERROR: Could not send an ERROR email. You should check what happened."
 
 
 def init_socialWatcher_and_check_credentials():
@@ -112,10 +118,10 @@ def post_process_data():
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
     logger = logging.getLogger()
-    logger.addHandler(logging.FileHandler(LOG_FILE_NAME, 'w'))
-    dataCollector = init_socialWatcher_and_check_credentials()
-    dataframe = run_data_collection(dataCollector)
+    # logger.addHandler(logging.FileHandler(LOG_FILE_NAME, 'w'))
+    # dataCollector = init_socialWatcher_and_check_credentials()
+    # dataframe = run_data_collection(dataCollector)
     post_process_data()
-    send_email_success(len(dataframe))
+    # send_email_success(len(dataframe))
     os.system("rm dataframe_*.csv")
     os.system("rm collect_*.csv")
