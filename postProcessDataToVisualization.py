@@ -9,6 +9,7 @@ import ast
 import datetime
 import shutil
 import logging
+import json
 
 NULL_VALUE = "NOTSELECTED"
 ALL_VALUE = "ALL"
@@ -67,9 +68,9 @@ def get_topic_from_row(row):
 
 def get_location_from_row(row):
     #Check if there is a reference name for the location
-    if PYSOCIALWATCHER_reference_field in row[GEO_LOCATIONS_column_name]:
-        return row[GEO_LOCATIONS_column_name][PYSOCIALWATCHER_reference_field]
-    return row[GEO_LOCATIONS_column_name]["values"][0]
+    # if PYSOCIALWATCHER_reference_field in row[GEO_LOCATIONS_column_name]:
+    #     return row[GEO_LOCATIONS_column_name][PYSOCIALWATCHER_reference_field]
+    return json.dumps(row[GEO_LOCATIONS_column_name])
 
 
 def get_scholarity_from_row(row):

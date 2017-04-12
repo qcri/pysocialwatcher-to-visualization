@@ -20,7 +20,6 @@ send_success_to = [
     "maraujo@hbku.edu.qa",
     "msthing@gmail.com",
     "iweber@hbku.edu.qa"
-
 ]
 
 def get_error_message():
@@ -96,8 +95,9 @@ def save_original_data():
     dataframe.to_csv(COMPRESSED_RAW_FILES_PATH + raw_file_name, compression="gzip")
 
 
-def run_data_collection(dataCollector):
+def run_data_collection():
     try:
+        dataCollector = init_socialWatcher_and_check_credentials()
         dataframe = dataCollector.run_data_collection(JSON_INPUT_FILE)
         dataframe.to_csv(DATA_RAW_OUTPUT_FILE)
         return dataframe
@@ -111,16 +111,40 @@ def post_process_data():
         save_original_data()
         postProcessData = postProcessDataToVisualization.PostProcessVisualizationData(DATA_RAW_OUTPUT_FILE)
         postProcessData.process_data()
+    except OSError as Error:
+        # If file already exist
+        if Error.errno == 17:
+            return
+        send_email_error("Error: Post Processing: " + Error.message)
+        raise Error
     except Exception as Error:
-        send_email_error("Error: Post Processing")
+        send_email_error("Error: Post Processing: " + Error.message)
         raise Error
 
 if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description='You should configure the "data_folder" output, the "json_input" for the data collection input, "raw_output" for the data collection output .csv file')
+    parser.add_argument('--data_folder')
+    parser.add_argument('--json_input')
+    parser.add_argument('--raw_output')
+    parser.add_argument('--email', action="store_true")
+    args = parser.parse_args()
+    if args.data_folder != None:
+        DATA_RAW_OUTPUT_FILE = args.data_folder
+    if args.json_input != None:
+        JSON_INPUT_FILE = args.json_input
+    if args.raw_output != None:
+        APPLICATION_ROOT_DATA_FOLDER = args.raw_output
+
+    if not args.email:
+        send_error_to = [send_error_to[0]]
+        send_success_to = [send_success_to[0]]
+
+
     logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
     logger = logging.getLogger()
     logger.addHandler(logging.FileHandler(LOG_FILE_NAME, 'w'))
-    dataCollector = init_socialWatcher_and_check_credentials()
-    dataframe = run_data_collection(dataCollector)
+    dataframe = run_data_collection()
     post_process_data()
     send_email_success(len(dataframe))
     os.system("rm dataframe_*.csv")

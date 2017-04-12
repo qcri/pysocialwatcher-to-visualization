@@ -14,10 +14,10 @@ PRODUCTION_SERVER = "10.2.0.108"
 if CURRENT_IP == PRODUCTION_SERVER:
     APPLICATION_ROOT_DATA_FOLDER = "/var/www/sha/data/"
 else:
-    APPLICATION_ROOT_DATA_FOLDER = "../"
+    APPLICATION_ROOT_DATA_FOLDER = "/home/maraujo/Dropbox/qcri/prototype/demographics-viz/data_doha/"
 
 LOG_FILE_NAME = "logging.txt"
-DATA_RAW_OUTPUT_FILE = "data.csv"
+DATA_RAW_OUTPUT_FILE = "/home/maraujo/Dropbox/qcri/prototype/pySocialWatcher/pysocialwatcher/dataframe_collected_finished_1491286597.csv"
 JSON_INPUT_FILE = "arabic_health_awareness.json"
 # JSON_INPUT_FILE = "peace_vs_war_collection_input.json"
 FB_CREDENTIALS_FILE = "fb_credentials.csv"
