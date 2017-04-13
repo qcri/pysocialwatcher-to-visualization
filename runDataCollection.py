@@ -121,14 +121,33 @@ def post_process_data():
         send_email_error("Error: Post Processing: " + Error.message)
         raise Error
 
+def continue_collection(collection_file):
+    try:
+        dataCollector = init_socialWatcher_and_check_credentials()
+        dataframe = dataCollector.load_data_and_continue_collection(collection_file)
+        dataframe.to_csv(DATA_RAW_OUTPUT_FILE)
+        return dataframe
+    except Exception as Error:
+        send_email_error("Error: Collecting Data")
+        raise Error
+
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='You should configure the "data_folder" output, the "json_input" for the data collection input, "raw_output" for the data collection output .csv file')
     parser.add_argument('--data_folder')
     parser.add_argument('--json_input')
     parser.add_argument('--raw_output')
+    parser.add_argument('--continue_collection')
     parser.add_argument('--email', action="store_true")
     args = parser.parse_args()
+    if not args.email:
+        send_error_to = [send_error_to[0]]
+        send_success_to = [send_success_to[0]]
+        
+    if args.continue_collection:
+        dataframe = continue_collection(args.continue_collection)
+        send_email_success(len(dataframe))
+        sys.exit(0)
     if args.data_folder != None:
         DATA_RAW_OUTPUT_FILE = args.data_folder
     if args.json_input != None:
@@ -136,9 +155,7 @@ if __name__ == '__main__':
     if args.raw_output != None:
         APPLICATION_ROOT_DATA_FOLDER = args.raw_output
 
-    if not args.email:
-        send_error_to = [send_error_to[0]]
-        send_success_to = [send_success_to[0]]
+
 
 
     logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
