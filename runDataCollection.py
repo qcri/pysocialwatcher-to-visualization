@@ -143,11 +143,7 @@ if __name__ == '__main__':
     if not args.email:
         send_error_to = [send_error_to[0]]
         send_success_to = [send_success_to[0]]
-        
-    if args.continue_collection:
-        dataframe = continue_collection(args.continue_collection)
-        send_email_success(len(dataframe))
-        sys.exit(0)
+
     if args.data_folder != None:
         DATA_RAW_OUTPUT_FILE = args.data_folder
     if args.json_input != None:
@@ -155,7 +151,10 @@ if __name__ == '__main__':
     if args.raw_output != None:
         APPLICATION_ROOT_DATA_FOLDER = args.raw_output
 
-
+    if args.continue_collection:
+        dataframe = continue_collection(args.continue_collection)
+        send_email_success(len(dataframe))
+        sys.exit(0)
 
 
     logging.basicConfig(level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
