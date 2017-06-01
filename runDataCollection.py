@@ -134,9 +134,9 @@ def continue_collection(collection_file):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description='You should configure the "data_folder" output, the "json_input" for the data collection input, "raw_output" for the data collection output .csv file')
-    parser.add_argument('--data_folder')
+    parser.add_argument('--output_file')
     parser.add_argument('--json_input')
-    parser.add_argument('--raw_output')
+    parser.add_argument('--output_folder')
     parser.add_argument('--continue_collection')
     parser.add_argument('--email', action="store_true")
     args = parser.parse_args()
@@ -144,12 +144,12 @@ if __name__ == '__main__':
         send_error_to = [send_error_to[0]]
         send_success_to = [send_success_to[0]]
 
-    if args.data_folder != None:
-        DATA_RAW_OUTPUT_FILE = args.data_folder
+    if args.output_file != None:
+        DATA_RAW_OUTPUT_FILE = args.output_file
     if args.json_input != None:
         JSON_INPUT_FILE = args.json_input
-    if args.raw_output != None:
-        APPLICATION_ROOT_DATA_FOLDER = args.raw_output
+    if args.output_folder != None:
+        APPLICATION_ROOT_DATA_FOLDER = args.output_folder
 
     if args.continue_collection:
         dataframe = continue_collection(args.continue_collection)
@@ -162,6 +162,6 @@ if __name__ == '__main__':
     logger.addHandler(logging.FileHandler(LOG_FILE_NAME, 'w'))
     dataframe = run_data_collection()
     post_process_data()
-    send_email_success(len(dataframe))
+    # send_email_success(len(dataframe))
     os.system("rm dataframe_*.csv")
     os.system("rm collect_*.csv")

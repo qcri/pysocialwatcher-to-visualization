@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+python runDataCollection.py --json_input nyork_demographics/ny_subregions_zipcodes.json --output_folder nyork_demographics/data --output_file nyork_demographics/output_collected.csv
